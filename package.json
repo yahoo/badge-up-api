@@ -1,0 +1,28 @@
+{
+  "name": "badges",
+  "version": "1.0.280",
+  "description": "We don't need no stinkin' badges!",
+  "main": "index.js",
+  "dependencies": {
+    "badge-up": "~2.0.0",
+    "body-parser": "~1.8.2",
+    "express": "~4.9.3",
+    "react": "~0.13.1"
+  },
+  "devDependencies": {
+    "chai": "~1.9.1",
+    "jenkins-mocha": "~1.0.8",
+    "mockery": "~1.4.0",
+    "request": "~2.44.0",
+    "sinon": "~1.10.3"
+  },
+  "scripts": {
+    "functional": "jenkins-mocha test/functional/*.js",
+    "test": "jenkins-mocha"
+  },
+  "author": "stjohn@yahoo-inc.com",
+  "jshint": {
+    "node": true,
+    "json": true
+  }
+}
