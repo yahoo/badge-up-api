@@ -13,6 +13,7 @@ resources:
     access_key_id: {{s3-access-key-id}}
     secret_access_key: {{s3-secret-access-key}}
     endpoint: "https://s3-us-west-2.amazonaws.com/screwdriver-stinking-badges-concourse-artifacts"
+    region_name: us-west-2
     initial_version: 1.0.0
 
 - name: stinking-badges-rc
@@ -23,6 +24,7 @@ resources:
     access_key_id: {{s3-access-key-id}}
     secret_access_key: {{s3-secret-access-key}}
     endpoint: "https://s3-us-west-2.amazonaws.com/screwdriver-stinking-badges-concourse-artifacts"
+    region_name: us-west-2
 
 - name: stinking-badges-final
   type: s3
@@ -32,6 +34,7 @@ resources:
     access_key_id: {{s3-access-key-id}}
     secret_access_key: {{s3-secret-access-key}}
     endpoint: "https://s3-us-west-2.amazonaws.com/screwdriver-stinking-badges-concourse"
+    region_name: us-west-2
 
 jobs:
 - name: unit
