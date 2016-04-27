@@ -62,5 +62,5 @@ jobs:
   - task: packer_bake
     file: stinking-badges/ci/bake.yml
     params:
-      access_key_id: {{s3-access-key-id}}
-      secret_access_key: {{s3-secret-access-key}}
+      AWS_ACCESS_KEY_ID: {{s3-access-key-id}}
+      AWS_SECRET_ACCESS_KEY: {{s3-secret-access-key}}
