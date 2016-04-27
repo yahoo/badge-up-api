@@ -26,8 +26,8 @@ run:
     wget https://releases.hashicorp.com/packer/0.8.6/packer_0.8.6_linux_amd64.zip
     unzip packer_0.8.6_linux_amd64.zip
     cd -
-    export AWS_ACCESS_KEY_ID={{access_key_id}}
-    export AWS_SECRET_ACCESS_KEY={{secret_access_key}}
+    export AWS_ACCESS_KEY_ID=$access_key_id
+    export AWS_SECRET_ACCESS_KEY=$secret_access_key
     env
     cd stinking-badges
     /usr/local/bin/packer build -machine-readable packer_config/packer_config.json | tee build.log
