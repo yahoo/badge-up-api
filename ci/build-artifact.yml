@@ -5,6 +5,7 @@ image: docker:///node#4.2.3
 
 inputs:
   - name: stinking-badges
+  - name: version
 
 outputs:
   - name: built-artifact
