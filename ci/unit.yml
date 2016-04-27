@@ -12,6 +12,7 @@ run:
   args:
   - -exc
   - |
+    cd app
     whoami
     env
     ls
