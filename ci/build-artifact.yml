@@ -6,6 +6,9 @@ image: docker:///node#4.2.3
 inputs:
   - name: stinking-badges
 
+outputs:
+  - name: built-artifact
+
 run:
   path: sh
   args:
