@@ -19,4 +19,4 @@ run:
     mkdir -p built-artifact
     cd stinking-badges
     tar zcvf stinking-badges-VERSION.tgz *
-    mv stinking-badgest-*.tgz ../built-artifact
+    mv stinking-badges-*.tgz ../built-artifact
