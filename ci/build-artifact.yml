@@ -21,3 +21,4 @@ run:
     tar zcvf stinking-badges-VERSION.tgz *
     mv stinking-badges-*.tgz ../built-artifact
     cd ..
+    find .
