@@ -13,6 +13,7 @@ resources:
     access_key_id: {{s3-access-key-id}}
     secret_access_key: {{s3-secret-access-key}}
     initial_version: 1.0.0
+    region_name: us-west-2
 
 - name: stinking-badges-rc
   type: s3
