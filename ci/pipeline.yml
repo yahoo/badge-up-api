@@ -61,3 +61,6 @@ jobs:
     trigger: true
   - task: packer_bake
     file: stinking-badges/ci/bake.yml
+    params:
+      access_key_id: {{s3-access-key-id}}
+      secret_access_key: {{s3-secret-access-key}}
