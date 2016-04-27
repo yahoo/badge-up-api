@@ -1,7 +1,7 @@
 ---
 platform: linux
 
-image: docker:///node#4.2.3
+image: docker:///ubuntu#14.04
 
 inputs:
   - name: stinking-badges
