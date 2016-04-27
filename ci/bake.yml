@@ -1,0 +1,31 @@
+---
+platform: linux
+
+image: docker:///node#4.2.3
+
+inputs:
+  - name: stinking-badges
+
+outputs:
+  - name: ami-id
+
+run:
+  path: sh
+  args:
+  - -exc
+  - |
+    whoami
+    env
+    ls
+    find .
+    pwd
+    PACKER_DIR=/usr/local/bin
+    mkdir -p ${PACKER_DIR} && cd ${PACKER_DIR}
+    wget https://releases.hashicorp.com/packer/0.8.6/packer_0.8.6_linux_amd64.zip
+    unzip packer_0.8.6_linux_amd64.zip
+    export AWS_ACCESS_KEY_ID={{s3-access-key-id}}
+    export AWS_SECRET_ACCESS_KEY={{s3-secret-access-key}}
+    env
+    /usr/local/bin/packer build -machine-readable stinking-badges/packer-config/packer_config.json | tee build.log
+    grep 'artifact,0,id' build.log | cut -d, -f6 | cut -d: -f2 > ami-id/ami-id
+    cat ami-id/ami-id

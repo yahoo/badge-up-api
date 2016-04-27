@@ -53,3 +53,11 @@ jobs:
     file: stinking-badges/ci/build-artifact.yml
   - put: stinking-badges-rc
     params: {file: built-artifact/stinking-badges-*.tgz}
+
+- name: bake
+  plan:
+  - get: stinking-badges
+    passed: [unit]
+    trigger: true
+  - task: packer_bake
+    file: stinking-badges/ci/bake.yml
