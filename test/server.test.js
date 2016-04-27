@@ -22,7 +22,7 @@ describe('server', function () {
         });
         mockery.registerMock('badge-up', badgerMock.generateMock());
 
-        require('../lib/server')(function (error, app) {
+        require('../lib/server')({}, function (error, app) {
             me.app = app;
             done();
         });
@@ -86,6 +86,28 @@ describe('server', function () {
 
             testUtils.getRequest({
                 endpoint: path.join('/', expected.label, expected.value, 'maroon'),
+                expectedStatusCode: 200,
+                expectedType: 'svg'
+            }, function (body) {
+                assert.strictEqual(body, testData.badgeUpData);
+
+                badgeUp.verify();
+                done();
+            });
+        });
+
+        it('should support hex colors', function (done) {
+            var expected = {
+                    label: 'leftLabel',
+                    value: 'rightValue',
+                    color: 'ff00ff'
+                },
+                badgeUp = badgerMock.accessMock();
+
+            badgeUp.withArgs(expected.label, expected.value, '#ff00ff').yieldsAsync(null, testData.badgeUpData);
+
+            testUtils.getRequest({
+                endpoint: path.join('/', expected.label, expected.value, expected.color),
                 expectedStatusCode: 200,
                 expectedType: 'svg'
             }, function (body) {

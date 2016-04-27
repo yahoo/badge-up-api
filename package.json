@@ -1,27 +1,36 @@
 {
-  "name": "badges",
-  "version": "1.0.280",
-  "description": "We don't need no stinkin' badges!",
+  "name": "badge-up-api",
+  "version": "1.0.0",
+  "description": "A simple API server that serves SVG badges without Cairo",
   "main": "index.js",
   "dependencies": {
     "badge-up": "~2.0.0",
     "body-parser": "~1.8.2",
-    "express": "~4.9.3",
-    "react": "~0.13.1"
+    "express": "~4.9.3"
   },
   "devDependencies": {
     "chai": "~1.9.1",
-    "jenkins-mocha": "~1.0.8",
+    "jenkins-mocha": "^2.6.0",
     "mockery": "~1.4.0",
     "request": "~2.44.0",
     "sinon": "~1.10.3"
   },
-  "scripts": {
-    "functional": "jenkins-mocha test/functional/*.js",
-    "test": "jenkins-mocha"
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:yahoo/badge-up-api.git"
   },
-  "author": "stjohn@yahoo-inc.com",
-  "jshint": {
+  "bugs": "https://github.com/yahoo/badge-up-api/issues",
+  "license": "BSD-3-Clause",
+  "scripts": {
+    "test": "jenkins-mocha",
+    "start": "node index.js"
+  },
+  "author": "St. John Johnson <stjohn@yahoo-inc.com>",
+  "contributors": [
+    "Darren Matsumoto <bobafett@yahoo-inc.com>",
+    "Peter Peterson <petey@yahoo-inc.com>"
+  ],
+  "jshintConfig": {
     "node": true,
     "json": true
   }
