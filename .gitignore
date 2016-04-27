@@ -28,3 +28,5 @@ artifacts
 *vendor/*/examples/*
 
 .DS_Store
+
+credentials.yml

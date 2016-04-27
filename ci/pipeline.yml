@@ -1,0 +1,54 @@
+resources:
+- name: stinking-badges
+  type: git
+  source:
+    uri: https://github.com/yahoo/badge-up-api.git
+    branch: concourseci
+
+- name: version
+  type: semver
+  source:
+    bucket: screwdriver-stinking-badges-concourse-artifacts
+    key: current-version
+    access_key_id: {{s3-access-key-id}}
+    secret_access_key: {{s3-secret-access-key}}
+    initial_version: 1.0.0
+
+- name: stinking-badges-rc
+  type: s3
+  source:
+    bucket: screwdriver-stinking-badges-concourse-artifacts
+    regexp: stinking-badges-(.*).tgz
+    access_key_id: {{s3-access-key-id}}
+    secret_access_key: {{s3-secret-access-key}}
+
+- name: stinking-badges-final
+  type: s3
+  source:
+    bucket: screwdriver-stinking-badges-concourse
+    regexp: stinking-badges-(.*).tgz
+    access_key_id: {{s3-access-key-id}}
+    secret_access_key: {{s3-secret-access-key}}
+
+jobs:
+- name: unit
+  plan:
+  - get: stinking-badges
+    trigger: true
+  - task: unit
+    file: stinking-badges/ci/unit.yml
+
+- name: build-rc
+  serial_groups: [version]
+  plan:
+  - get: stinking-badges
+    passed: [unit]
+    trigger: true
+  - get: version
+    params: {pre: rc}
+  - task: build-artifact
+    file: stinking-badges/ci/build-artifact.yml
+  - put: stinking-badges-rc
+    params: {file: built-artifact/stinking-badges-*.tgz}
+  - put: version
+    params: {file: version/number}

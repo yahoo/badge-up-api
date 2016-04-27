@@ -1,0 +1,22 @@
+---
+platform: linux
+
+image: docker:///node#4.2.3
+
+inputs:
+  - name: stinking-badges
+
+run:
+  path: sh
+  args:
+  - -exc
+  - |
+    whoami
+    env
+    ls
+    find .
+    pwd
+    mkdir -p built-artifact
+    cd stinking-badges
+    tar zcvf stinking-badges-VERSION.tgz *
+    mv stinking-badgest-*.tgz ../built-artifact
