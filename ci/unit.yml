@@ -5,6 +5,7 @@ image: docker:///node#4.2.3
 
 inputs:
   - name: stinking-badges
+    path: .
 
 run:
   path: sh
