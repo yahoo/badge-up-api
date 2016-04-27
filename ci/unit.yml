@@ -17,3 +17,5 @@ run:
     ls
     find .
     pwd
+    npm install
+    npm test
