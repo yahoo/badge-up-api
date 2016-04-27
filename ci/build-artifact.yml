@@ -22,7 +22,7 @@ run:
     pwd
     mkdir -p built-artifact
     cd stinking-badges
-    tar zcvf stinking-badges-VERSION.tgz *
+    tar zcvf stinking-badges-$(cat ../version/number).tgz *
     mv stinking-badges-*.tgz ../built-artifact
     cd ..
     find .
