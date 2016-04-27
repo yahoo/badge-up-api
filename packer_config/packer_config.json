@@ -1,0 +1,39 @@
+{
+  "builders": [{
+    "type": "amazon-ebs",
+    "region": "us-west-2",
+    "ssh_pty": true,
+    "associate_public_ip_address": true,
+    "instance_type": "t2.micro",
+    "ssh_username": "ubuntu",
+    "ami_name": "stinking-badges-aws {{timestamp}}",
+    "source_ami": "ami-7d28d91d"
+  }],
+  "provisioners": [{
+    "type": "file",
+    "source": "packer_config/scripts",
+    "destination": "/tmp/scripts"
+  }, {
+    "type": "shell",
+    "environment_vars": [
+      "INSTANCE_USER=ubuntu",
+      "NVM_VERSION=v0.24.0",
+      "NODE_VERSION=0.10"
+    ],
+    "script": "packer_config/scripts/primal"
+  }, {
+    "type": "file",
+    "source": "app",
+    "destination": "/tmp/appserver"
+  }, {
+    "type": "shell",
+    "environment_vars": [
+      "INSTANCE_USER=ubuntu",
+      "NGINX_WORKERS=4",
+      "SERVER_NAME=stinking-badges-aws.local",
+      "NODE_ENV=production",
+      "NAME=stinking-badges-aws-production"
+    ],
+    "script": "packer_config/scripts/carnivore"
+  }]
+}
