@@ -11,5 +11,8 @@ run:
   args:
   - -exc
   - |
-    npm install
-    npm test
+    whoami
+    env
+    ls
+    find .
+    pwd
