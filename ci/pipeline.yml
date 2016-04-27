@@ -12,7 +12,6 @@ resources:
     key: current-version
     access_key_id: {{s3-access-key-id}}
     secret_access_key: {{s3-secret-access-key}}
-    endpoint: "https://s3-us-west-2.amazonaws.com/screwdriver-stinking-badges-concourse-artifacts"
     region_name: us-west-2
     initial_version: 1.0.0
 
@@ -23,7 +22,6 @@ resources:
     regexp: stinking-badges-(.*).tgz
     access_key_id: {{s3-access-key-id}}
     secret_access_key: {{s3-secret-access-key}}
-    endpoint: "https://s3-us-west-2.amazonaws.com/screwdriver-stinking-badges-concourse-artifacts"
     region_name: us-west-2
 
 - name: stinking-badges-final
@@ -33,7 +31,6 @@ resources:
     regexp: stinking-badges-(.*).tgz
     access_key_id: {{s3-access-key-id}}
     secret_access_key: {{s3-secret-access-key}}
-    endpoint: "https://s3-us-west-2.amazonaws.com/screwdriver-stinking-badges-concourse"
     region_name: us-west-2
 
 jobs:
@@ -56,5 +53,3 @@ jobs:
     file: stinking-badges/ci/build-artifact.yml
   - put: stinking-badges-rc
     params: {file: built-artifact/stinking-badges-*.tgz}
-  - put: version
-    params: {file: version/number}
