@@ -26,3 +26,4 @@ run:
     mv stinking-badges-*.tgz ../built-artifact
     cd ..
     find .
+    cat ./version/number
