@@ -67,6 +67,9 @@ jobs:
 
 - name: deploy
   plan:
+  - get: stinking-badges
+    passed: [bake]
+    trigger: true
   - task: terraform_deploy
     file: stinking-badges/ci/deploy.yml
     params:
