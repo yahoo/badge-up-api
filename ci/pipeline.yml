@@ -64,3 +64,11 @@ jobs:
     params:
       AWS_ACCESS_KEY_ID: {{s3-access-key-id}}
       AWS_SECRET_ACCESS_KEY: {{s3-secret-access-key}}
+
+- name: deploy
+  plan:
+  - task: terraform_deploy
+    file: stinking-badges/ci/deploy.yml
+    params:
+      AWS_ACCESS_KEY_ID: {{s3-access-key-id}}
+      AWS_SECRET_ACCESS_KEY: {{s3-secret-access-key}}
