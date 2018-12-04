@@ -9,11 +9,11 @@
     "express": "~4.9.3"
   },
   "devDependencies": {
-    "chai": "~1.9.1",
-    "jenkins-mocha": "^2.6.0",
-    "mockery": "~1.4.0",
-    "request": "~2.44.0",
-    "sinon": "~1.10.3"
+    "chai": "~4.2.0",
+    "jenkins-mocha": "^6.0.0",
+    "mockery": "~2.0.0",
+    "request": "~2.88.0",
+    "sinon": "~4.5.0"
   },
   "repository": {
     "type": "git",
